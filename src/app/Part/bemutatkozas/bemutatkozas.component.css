@@ -1,0 +1,44 @@
+.main-title {
+  background: linear-gradient(#402722, #734c36);
+  display: grid;
+  align-items: center;
+  height: 90vh;
+}
+
+h1 {
+  color: whitesmoke;
+  text-align: center;
+}
+
+main {
+  background: linear-gradient(#734c36, #8c6b4f 50%);
+  height: 100vh;
+  padding: 0 20px;
+}
+
+img {
+  width: 100%;
+  min-height: 30vh;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.description {
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  background-color: #0008;
+  color: whitesmoke;
+  height: 30vh;
+  border-radius: 10px;
+  font-size: 1.3rem;
+}
+
+img:nth-of-type(n/2) {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.description:nth-of-type(n/2) {
+  margin-bottom: 8px;
+  margin-top: 0;
+}

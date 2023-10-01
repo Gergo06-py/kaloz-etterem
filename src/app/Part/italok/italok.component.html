@@ -1,0 +1,69 @@
+<div class="container">
+  <!-- {{ italok | json }} -->
+  <ng-container *ngIf="!showError; else hibasapi">
+    <div class="row">
+      <div *ngFor="let o of oszlopok" class="col">
+        {{ o.text }}
+      </div>
+      <div class="col">Műveletek</div>
+    </div>
+
+    <div class="row my-2">
+      <div *ngFor="let o of oszlopok" class="col">
+        <ng-container *ngIf="o.type === 'plain'; else szerkeszt">
+          <input
+            [ngModel]="ujItal[o.key]"
+            [type]="o.type"
+            class="form-control"
+            disabled
+          />
+        </ng-container>
+        <ng-template #szerkeszt>
+          <input
+            [ngModel]="ujItal[o.key]"
+            [type]="o.type"
+            class="form-control"
+          />
+        </ng-template>
+      </div>
+      <div class="col">
+        <button class="btn btn-success m-1" (click)="onCreate()">
+          Hozzáadás
+        </button>
+      </div>
+    </div>
+    <hr />
+    <div class="row my-2" *ngFor="let etel of italok">
+      <div *ngFor="let o of oszlopok" class="col">
+        <ng-container *ngIf="o.type === 'plain'; else szerkeszt">
+          <input
+            [ngModel]="etel[o.key]"
+            [type]="o.type"
+            class="form-control"
+            disabled
+          />
+        </ng-container>
+        <ng-template #szerkeszt>
+          <input
+            [(ngModel)]="etel[o.key]"
+            [type]="o.type"
+            class="form-control"
+          />
+        </ng-template>
+      </div>
+      <div class="col">
+        <button class="btn btn-warning m-1" (click)="onUpdate(etel)">
+          Módosítás
+        </button>
+        <button class="btn btn-danger m-1" (click)="onDelete(etel.id)">
+          Törlés
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #hibasapi>
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  </ng-template>
+</div>
